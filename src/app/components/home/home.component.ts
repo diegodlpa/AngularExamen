@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { data } from 'src/app/services/models/data.model';
+import { Subscription } from 'rxjs';
+import { data } from 'src/app/models/data.model';
 import { RestService } from 'src/app/services/rest.service';
-
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ export class HomeComponent implements OnInit {
   pagina = 1
   total = 0
   porpagina = 0
+  servicio$: Subscription
   //variable para desplegar la informacion en el form
   info = new data
   //variable para desplegar la informacion en las cards
@@ -23,15 +25,37 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-   
+    
       this.obtenerlista(this.pagina)
       
     
   }
 
   
+  
   editarUsuario(id){
-    this.servicio.editarUsuario(id, this.info)
+    Swal.fire({
+      title: '¿Editar informacion del usuario?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: `Editar`,
+      denyButtonText: `No Editar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+       
+        Swal.fire('Editado!', '', 'success')
+        setTimeout(() => {
+          this.servicio.editarUsuario(id, this.info)
+        }, 1000);
+      } else if (result.isDenied) {
+        Swal.fire('El usuario no fue editado', '', 'info')
+        setTimeout(() => {
+
+        }, 1000);
+        
+      }
+    })
+    
     
   }
   cambiarPagina()
@@ -44,7 +68,8 @@ export class HomeComponent implements OnInit {
 
   obtenerlista(pag)
   {
-    this.servicio.obtenerpaginaLista(pag).subscribe( (resp:any) => {
+    this.servicio$ = this.servicio.obtenerpaginaLista(pag).subscribe( (resp:any) => {
+      
       
       this.total = resp.total_pages
       this.porpagina = resp.per_page

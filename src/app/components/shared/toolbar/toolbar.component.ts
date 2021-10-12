@@ -17,7 +17,11 @@ export class ToolbarComponent implements OnInit {
     this.loginservicio.logout();
     this.router.navigate(['/login']);
   }
+  estaLogueado()
+  {
+    return this.loginservicio.estaLogueado();
+  }
   refresh(): void {
-    window.location.reload();
+    this.router.navigate(['/home'])
 }
 }
