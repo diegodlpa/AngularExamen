@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="m-5">
+        <form class="form-horizontal needs-validation" novalidate
+            [formGroup]="formGroup">
+
+        <mat-card class="example-card">
+          
+            <mat-card-title>Login</mat-card-title>
+            
+            <mat-divider inset></mat-divider>
+            <mat-card-actions>
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="pat@example.com" [formControl]="email" formControlName="email" required>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+                  <br>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput formControlName="password"  [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  </mat-form-field>
+                  <br>
+              <button mat-button (click)="inicar()">LOGIN</button>
+              <button mat-button>CANCEL</button>
+            </mat-card-actions>
+            <mat-card-footer>
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </mat-card-footer>
+          </mat-card>
+          </form>
+    </div>
+</div>
+

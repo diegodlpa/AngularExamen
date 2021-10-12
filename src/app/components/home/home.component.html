@@ -1,0 +1,72 @@
+<app-toolbar></app-toolbar>
+
+
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <br>
+      <br>
+      <br>
+
+      <mat-form-field appearance="fill">
+        <mat-label>ID</mat-label>
+        <input disabled [(ngModel)]="info.id" #id name="id" matInput >
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input [(ngModel)]="info.first_name" name="fn" matInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Last name</mat-label>
+        <input [(ngModel)]="info.last_name" name="ln" matInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input [(ngModel)]="info.email" name="email" matInput type="email">
+      </mat-form-field>
+      <br>
+      <div class="example-button-container">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button mat-fab color="primary" aria-label="">
+          <mat-icon (click)="editarUsuario(id.value)">save</mat-icon>
+        </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button mat-fab color="warn" (click)="drawer.close()" aria-label="">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+      
+      
+      
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+      <mat-grid-list cols="3" rowHeight="1:1">
+        <mat-grid-tile *ngFor="let item of datos">
+            <mat-card class="example-card">
+                <mat-card-header>
+                  <div mat-card-avatar class="example-header-image"></div>
+                  <mat-card-title>{{item.first_name}} {{ item.last_name }}</mat-card-title>
+                  <mat-card-subtitle>{{item.email}}</mat-card-subtitle>
+                </mat-card-header>
+                <img  [src]="item.avatar" style="margin-left: 3.5em;" width="128px" height="128px">
+               
+                <mat-card-actions>
+                  <button mat-button (click)="verUsuario(item.id, drawer)">See more</button>
+                 
+                </mat-card-actions>
+              </mat-card>
+              
+        </mat-grid-tile>
+        
+      </mat-grid-list>
+    </div>
+  
+  </mat-drawer-container>
+
+<mat-paginator [length]="total"
+                [pageSize]="porpagina"
+              (click)="cambiarPagina()"
+              aria-label="Select page">
+</mat-paginator>
