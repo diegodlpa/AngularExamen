@@ -21,13 +21,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ToolbarComponent } from './components/shared/toolbar/toolbar.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    PostsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

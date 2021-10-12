@@ -1,9 +1,11 @@
-<mat-toolbar>
+<mat-toolbar [hidden]="!estaLogueado()">
     <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
      <mat-icon>menu</mat-icon>
    </button> -->
-   <span (click)="refresh()">Administrador de usuarios</span>
+   <span class="pointer" (click)="refresh()">Administrador de usuarios</span>
+  <!--  <a class="nav-link active" aria-current="page" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a> -->
    <span class="example-spacer"></span>
+   
    
    <button mat-icon-button class="example-icon" aria-label="logout">
     <mat-icon (click)="logout()">logout</mat-icon>

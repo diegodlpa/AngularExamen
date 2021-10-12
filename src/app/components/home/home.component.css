@@ -5,6 +5,15 @@
     background: #004a9f;
     color: white;
 }
+.example-button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
+.example-header-image {
+
+    margin-left: 5em;  
+    background-size: cover;
+
+  }
 
 mat-sidenav {
     margin: 16px;
