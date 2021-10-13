@@ -48,8 +48,8 @@
   </mat-drawer>
 
   <div class="example-sidenav-content">
-    <mat-grid-list cols="3" rowHeight="1:1">
-      <mat-grid-tile *ngFor="let item of datos">
+    <mat-grid-list [cols]="breakpoint" (window:resize)="onResize($event)" rowHeight="3:2.3">
+      <mat-grid-tile *ngFor="let item of datos ">
         <mat-card class="example-card">
           <mat-card-header>
 
@@ -71,5 +71,5 @@
 
 </mat-drawer-container>
 
-<mat-paginator [length]="total" [pageSize]="porpagina" (click)="cambiarPagina()" aria-label="Select page">
+<mat-paginator [length]="total" [pageSize]="page_size"  (page)="cambiarPagina($event)" aria-label="Select page">
 </mat-paginator>

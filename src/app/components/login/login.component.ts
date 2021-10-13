@@ -28,9 +28,9 @@ export class LoginComponent implements OnInit {
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
-  inicar()
+  iniciar()
   {
-    console.log(this.formGroup.value);
+    
     
     let userInfo: UserInfo = Object.assign({}, this.formGroup.value);
    this.loginservicio.login(userInfo).subscribe(token => this.recibirToken(token),

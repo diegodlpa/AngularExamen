@@ -22,6 +22,7 @@ export class ToolbarComponent implements OnInit {
     return this.loginservicio.estaLogueado();
   }
   refresh(): void {
+    
     this.router.navigate(['/home'])
 }
 }
