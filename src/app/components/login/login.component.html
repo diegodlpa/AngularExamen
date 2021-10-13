@@ -1,21 +1,21 @@
 <div class="container">
     <div class="m-5">
-        <form class="form-horizontal needs-validation" novalidate
+        <form class="form-horizontal needs-validation" fxLayout="column" novalidate
             [formGroup]="formGroup">
-
+            <div class="input-row" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
         <mat-card class="example-card">
           
             <mat-card-title>Login</mat-card-title>
             
             <mat-divider inset></mat-divider>
             <mat-card-actions>
-                <mat-form-field appearance="fill">
+                <mat-form-field fxFlex appearance="fill">
                     <mat-label>Enter your email</mat-label>
                     <input matInput placeholder="pat@example.com" [formControl]="email" formControlName="email" required>
                     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
                   </mat-form-field>
                   <br>
-                  <mat-form-field appearance="fill">
+                  <mat-form-field fxFlex appearance="fill">
                     <mat-label>Enter your password</mat-label>
                     <input matInput formControlName="password"  [type]="hide ? 'password' : 'text'">
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
@@ -23,13 +23,14 @@
                     </button>
                   </mat-form-field>
                   <br>
-              <button mat-button (click)="inicar()">LOGIN</button>
+              <button mat-button (click)="iniciar()">LOGIN</button>
               <button mat-button>CANCEL</button>
             </mat-card-actions>
             <mat-card-footer>
               <mat-progress-bar mode="indeterminate"></mat-progress-bar>
             </mat-card-footer>
           </mat-card>
+          </div>
           </form>
     </div>
 </div>
